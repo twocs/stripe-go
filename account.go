@@ -21,26 +21,27 @@ type AccountCapability string
 
 // List of values that AccountCapability can take.
 const (
-	AccountCapabilityAUBECSDebitPayments     AccountCapability = "au_becs_debit_payments"
-	AccountCapabilityBACSDebitPayments       AccountCapability = "bacs_debit_payments"
-	AccountCapabilityBancontactPayments      AccountCapability = "bancontact_payments"
-	AccountCapabilityCardIssuing             AccountCapability = "card_issuing"
-	AccountCapabilityCardPayments            AccountCapability = "card_payments"
-	AccountCapabilityCartesBancairesPayments AccountCapability = "cartes_bancaires_payments"
-	AccountCapabilityEPSPayments             AccountCapability = "eps_payments"
-	AccountCapabilityFPXPayments             AccountCapability = "fpx_payments"
-	AccountCapabilityGiropayPayments         AccountCapability = "giropay_payments"
-	AccountCapabilityGrabpayPayments         AccountCapability = "grabpay_payments"
-	AccountCapabilityIdealPayments           AccountCapability = "ideal_payments"
-	AccountCapabilityJCBPayments             AccountCapability = "jcb_payments"
-	AccountCapabilityLegacyPayments          AccountCapability = "legacy_payments"
-	AccountCapabilityOXXOPayments            AccountCapability = "oxxo_payments"
-	AccountCapabilityP24Payments             AccountCapability = "p24_payments"
-	AccountCapabilitySEPADebitPayments       AccountCapability = "sepa_debit_payments"
-	AccountCapabilitySofortPayments          AccountCapability = "sofort_payments"
-	AccountCapabilityTaxReportingUS1099K     AccountCapability = "tax_reporting_us_1099_k"
-	AccountCapabilityTaxReportingUS1099MISC  AccountCapability = "tax_reporting_us_1099_misc"
-	AccountCapabilityTransfers               AccountCapability = "transfers"
+	AccountCapabilityAfterpayClearpayPayments AccountCapability = "afterpay_clearpay_payments"
+	AccountCapabilityAUBECSDebitPayments      AccountCapability = "au_becs_debit_payments"
+	AccountCapabilityBACSDebitPayments        AccountCapability = "bacs_debit_payments"
+	AccountCapabilityBancontactPayments       AccountCapability = "bancontact_payments"
+	AccountCapabilityCardIssuing              AccountCapability = "card_issuing"
+	AccountCapabilityCardPayments             AccountCapability = "card_payments"
+	AccountCapabilityCartesBancairesPayments  AccountCapability = "cartes_bancaires_payments"
+	AccountCapabilityEPSPayments              AccountCapability = "eps_payments"
+	AccountCapabilityFPXPayments              AccountCapability = "fpx_payments"
+	AccountCapabilityGiropayPayments          AccountCapability = "giropay_payments"
+	AccountCapabilityGrabpayPayments          AccountCapability = "grabpay_payments"
+	AccountCapabilityIdealPayments            AccountCapability = "ideal_payments"
+	AccountCapabilityJCBPayments              AccountCapability = "jcb_payments"
+	AccountCapabilityLegacyPayments           AccountCapability = "legacy_payments"
+	AccountCapabilityOXXOPayments             AccountCapability = "oxxo_payments"
+	AccountCapabilityP24Payments              AccountCapability = "p24_payments"
+	AccountCapabilitySEPADebitPayments        AccountCapability = "sepa_debit_payments"
+	AccountCapabilitySofortPayments           AccountCapability = "sofort_payments"
+	AccountCapabilityTaxReportingUS1099K      AccountCapability = "tax_reporting_us_1099_k"
+	AccountCapabilityTaxReportingUS1099MISC   AccountCapability = "tax_reporting_us_1099_misc"
+	AccountCapabilityTransfers                AccountCapability = "transfers"
 )
 
 // AccountCapabilityStatus is the status a given capability can have
@@ -170,6 +171,11 @@ type AccountBusinessProfileParams struct {
 	URL                *string        `form:"url"`
 }
 
+// AccountCapabilitiesAfterpayClearpayPaymentsParams represent alloweed parameters to configure the Afterpay Clearpay capability on an account
+type AccountCapabilitiesAfterpayClearpayPaymentsParams struct {
+	Requested *bool `form:"requested"`
+}
+
 // AccountCapabilitiesAUBECSDebitPaymentsParams represent allowed parameters to configure the AU BECS Debit capability on an account.
 type AccountCapabilitiesAUBECSDebitPaymentsParams struct {
 	Requested *bool `form:"requested"`
@@ -272,26 +278,27 @@ type AccountCapabilitiesTransfersParams struct {
 
 // AccountCapabilitiesParams represent allowed parameters to configure capabilities on an account.
 type AccountCapabilitiesParams struct {
-	AUBECSDebitPayments     *AccountCapabilitiesAUBECSDebitPaymentsParams     `form:"au_becs_debit_payments"`
-	BACSDebitPayments       *AccountCapabilitiesBACSDebitPaymentsParams       `form:"bacs_debit_payments"`
-	BancontactPayments      *AccountCapabilitiesBancontactPaymentsParams      `form:"bancontact_payments"`
-	CardIssuing             *AccountCapabilitiesCardIssuingParams             `form:"card_issuing"`
-	CardPayments            *AccountCapabilitiesCardPaymentsParams            `form:"card_payments"`
-	CartesBancairesPayments *AccountCapabilitiesCartesBancairesPaymentsParams `form:"cartes_bancaires_payments"`
-	EPSPayments             *AccountCapabilitiesEPSPaymentsParams             `form:"eps_payments"`
-	FPXPayments             *AccountCapabilitiesFPXPaymentsParams             `form:"fpx_payments"`
-	GiropayPayments         *AccountCapabilitiesGiropayPaymentsParams         `form:"giropay_payments"`
-	GrabpayPayments         *AccountCapabilitiesGrabpayPaymentsParams         `form:"grabpay_payments"`
-	IdealPayments           *AccountCapabilitiesIdealPaymentsParams           `form:"ideal_payments"`
-	JCBPayments             *AccountCapabilitiesJCBPaymentsParams             `form:"jcb_payments"`
-	LegacyPayments          *AccountCapabilitiesLegacyPaymentsParams          `form:"legacy_payments"`
-	OXXOPayments            *AccountCapabilitiesOXXOPaymentsParams            `form:"oxxo_payments"`
-	P24Payments             *AccountCapabilitiesP24PaymentsParams             `form:"p24_payments"`
-	SEPADebitPayments       *AccountCapabilitiesSEPADebitPaymentsParams       `form:"sepa_debit_payments"`
-	SofortPayments          *AccountCapabilitiesSofortPaymentsParams          `form:"sofort_payments"`
-	TaxReportingUS1099K     *AccountCapabilitiesTaxReportingUS1099KParams     `form:"tax_reporting_us_1099_k"`
-	TaxReportingUS1099MISC  *AccountCapabilitiesTaxReportingUS1099MISCParams  `form:"tax_reporting_us_1099_misc"`
-	Transfers               *AccountCapabilitiesTransfersParams               `form:"transfers"`
+	AfterpayClearpayPayments *AccountCapabilitiesAfterpayClearpayPaymentsParams `form:"afterpay_clearpay_payments"`
+	AUBECSDebitPayments      *AccountCapabilitiesAUBECSDebitPaymentsParams      `form:"au_becs_debit_payments"`
+	BACSDebitPayments        *AccountCapabilitiesBACSDebitPaymentsParams        `form:"bacs_debit_payments"`
+	BancontactPayments       *AccountCapabilitiesBancontactPaymentsParams       `form:"bancontact_payments"`
+	CardIssuing              *AccountCapabilitiesCardIssuingParams              `form:"card_issuing"`
+	CardPayments             *AccountCapabilitiesCardPaymentsParams             `form:"card_payments"`
+	CartesBancairesPayments  *AccountCapabilitiesCartesBancairesPaymentsParams  `form:"cartes_bancaires_payments"`
+	EPSPayments              *AccountCapabilitiesEPSPaymentsParams              `form:"eps_payments"`
+	FPXPayments              *AccountCapabilitiesFPXPaymentsParams              `form:"fpx_payments"`
+	GiropayPayments          *AccountCapabilitiesGiropayPaymentsParams          `form:"giropay_payments"`
+	GrabpayPayments          *AccountCapabilitiesGrabpayPaymentsParams          `form:"grabpay_payments"`
+	IdealPayments            *AccountCapabilitiesIdealPaymentsParams            `form:"ideal_payments"`
+	JCBPayments              *AccountCapabilitiesJCBPaymentsParams              `form:"jcb_payments"`
+	LegacyPayments           *AccountCapabilitiesLegacyPaymentsParams           `form:"legacy_payments"`
+	OXXOPayments             *AccountCapabilitiesOXXOPaymentsParams             `form:"oxxo_payments"`
+	P24Payments              *AccountCapabilitiesP24PaymentsParams              `form:"p24_payments"`
+	SEPADebitPayments        *AccountCapabilitiesSEPADebitPaymentsParams        `form:"sepa_debit_payments"`
+	SofortPayments           *AccountCapabilitiesSofortPaymentsParams           `form:"sofort_payments"`
+	TaxReportingUS1099K      *AccountCapabilitiesTaxReportingUS1099KParams      `form:"tax_reporting_us_1099_k"`
+	TaxReportingUS1099MISC   *AccountCapabilitiesTaxReportingUS1099MISCParams   `form:"tax_reporting_us_1099_misc"`
+	Transfers                *AccountCapabilitiesTransfersParams                `form:"transfers"`
 }
 
 // AccountCompanyVerificationDocumentParams are the parameters allowed to pass for a document
@@ -547,26 +554,27 @@ type AccountBusinessProfile struct {
 
 // AccountCapabilities is the resource representing the capabilities enabled on that account.
 type AccountCapabilities struct {
-	AUBECSDebitPayments     AccountCapabilityStatus `json:"au_becs_debit_payments"`
-	BACSDebitPayments       AccountCapabilityStatus `json:"bacs_debit_payments"`
-	BancontactPayments      AccountCapabilityStatus `json:"bancontact_payments"`
-	CardIssuing             AccountCapabilityStatus `json:"card_issuing"`
-	CardPayments            AccountCapabilityStatus `json:"card_payments"`
-	CartesBancairesPayments AccountCapabilityStatus `json:"cartes_bancaires_payments"`
-	EPSPayments             AccountCapabilityStatus `json:"eps_payments"`
-	FPXPayments             AccountCapabilityStatus `json:"fpx_payments"`
-	GiropayPayments         AccountCapabilityStatus `json:"giropay_payments"`
-	GrabpayPayments         AccountCapabilityStatus `json:"grabpay_payments"`
-	IdealPayments           AccountCapabilityStatus `json:"ideal_payments"`
-	JCBPayments             AccountCapabilityStatus `json:"jcb_payments"`
-	LegacyPayments          AccountCapabilityStatus `json:"legacy_payments"`
-	OXXOPayments            AccountCapabilityStatus `json:"oxxo_payments"`
-	P24Payments             AccountCapabilityStatus `json:"p24_payments"`
-	SEPADebitPayments       AccountCapabilityStatus `json:"sepa_debit_payments"`
-	SofortPayments          AccountCapabilityStatus `json:"sofort_payments"`
-	TaxReportingUS1099K     AccountCapabilityStatus `json:"tax_reporting_us_1099_k"`
-	TaxReportingUS1099MISC  AccountCapabilityStatus `json:"tax_reporting_us_1099_misc"`
-	Transfers               AccountCapabilityStatus `json:"transfers"`
+	AfterpayClearpayPayments AccountCapabilityStatus `json:"afterpay_clearpay_payments"`
+	AUBECSDebitPayments      AccountCapabilityStatus `json:"au_becs_debit_payments"`
+	BACSDebitPayments        AccountCapabilityStatus `json:"bacs_debit_payments"`
+	BancontactPayments       AccountCapabilityStatus `json:"bancontact_payments"`
+	CardIssuing              AccountCapabilityStatus `json:"card_issuing"`
+	CardPayments             AccountCapabilityStatus `json:"card_payments"`
+	CartesBancairesPayments  AccountCapabilityStatus `json:"cartes_bancaires_payments"`
+	EPSPayments              AccountCapabilityStatus `json:"eps_payments"`
+	FPXPayments              AccountCapabilityStatus `json:"fpx_payments"`
+	GiropayPayments          AccountCapabilityStatus `json:"giropay_payments"`
+	GrabpayPayments          AccountCapabilityStatus `json:"grabpay_payments"`
+	IdealPayments            AccountCapabilityStatus `json:"ideal_payments"`
+	JCBPayments              AccountCapabilityStatus `json:"jcb_payments"`
+	LegacyPayments           AccountCapabilityStatus `json:"legacy_payments"`
+	OXXOPayments             AccountCapabilityStatus `json:"oxxo_payments"`
+	P24Payments              AccountCapabilityStatus `json:"p24_payments"`
+	SEPADebitPayments        AccountCapabilityStatus `json:"sepa_debit_payments"`
+	SofortPayments           AccountCapabilityStatus `json:"sofort_payments"`
+	TaxReportingUS1099K      AccountCapabilityStatus `json:"tax_reporting_us_1099_k"`
+	TaxReportingUS1099MISC   AccountCapabilityStatus `json:"tax_reporting_us_1099_misc"`
+	Transfers                AccountCapabilityStatus `json:"transfers"`
 }
 
 // AccountCompanyVerificationDocument represents details about a company's verification state.
