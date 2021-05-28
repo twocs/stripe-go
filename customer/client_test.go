@@ -30,6 +30,25 @@ func TestCustomerList(t *testing.T) {
 	assert.NotNil(t, i.CustomerList())
 }
 
+func TestCustomerListLimit(t *testing.T) {
+	params := &stripe.CustomerListParams{}
+	params.Filters.AddFilter("limit", "", "3")
+	
+	// Verify the Limit example shown in https://stripe.com/docs/api/customers/list?lang=go
+
+	i := List(params)
+
+	customers := make([]stripe.Customer)
+	for i.Next() {
+		c := i.Customer()
+		customers = append(customers, *c)
+	}
+	
+	assert.Nil(t, i.Err())
+	assert.Len(t, customers, 3, "The limit should return 3")
+
+}
+
 func TestCustomerNew(t *testing.T) {
 	customer, err := New(&stripe.CustomerParams{
 		Email: stripe.String("foo@example.com"),
